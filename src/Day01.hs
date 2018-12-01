@@ -7,7 +7,6 @@ import           Util           (DayResult (..))
 
 import           Data.FileEmbed (embedStringFile)
 import qualified Data.Set       as S
-import           Data.Text      (Text)
 import qualified Data.Text      as T
 
 parseInput :: String -> Integer
@@ -24,6 +23,7 @@ firstRepeat :: Ord a => S.Set a -> [a] -> a
 firstRepeat acc (a:as)
   | a `S.member` acc = a
   | otherwise = firstRepeat (S.insert a acc) as
+firstRepeat _ _ = error "First repeat expects infinite input"
 
 result :: DayResult Integer Integer
 result =
