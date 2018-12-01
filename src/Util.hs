@@ -3,16 +3,22 @@
 
 module Util where
 
+import           Data.Bifunctor
+
 data DayResult a b = DayResult
     { partA :: a
     , partB :: b
     } deriving (Functor,Eq,Show)
 
-printDayResult :: (Show a, Show b) => Int -> DayResult a b -> IO ()
+instance Bifunctor DayResult where
+  first f (DayResult pa pb) = DayResult (f pa) pb
+  second = fmap
+
+printDayResult :: Int -> DayResult String String -> IO ()
 printDayResult dayNum DayResult{..} = do
   putStrLn ("Day " <> show dayNum <> ":")
   putStr "\tPart A: "
-  print partA
+  putStrLn partA
   putStr "\tPart B: "
-  print partB
+  putStrLn partB
 
