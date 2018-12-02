@@ -2,7 +2,7 @@
 
 module Day02 where
 
-import           Util
+import           Util           (DayResult (..), allPairs)
 
 import           Control.Monad  (guard)
 import           Data.FileEmbed (embedStringFile)
@@ -13,10 +13,10 @@ input :: [String]
 input = lines $(embedStringFile "input/day02.txt")
 
 letterOccurances :: String -> M.Map Char Int
-letterOccurances = foldr (\n m -> M.insertWith (+) n 1 m) M.empty
+letterOccurances = foldr (\n -> M.insertWith (+) n 1) M.empty
 
 differences :: Eq a => [a] -> [a] -> Int
-differences as bs = length $ filter not $ zipWith (==) as bs
+differences as = length . filter not . zipWith (==) as
 
 result :: DayResult Int String
 result =
@@ -27,8 +27,6 @@ result =
                   length (filter (any (== 3)) lO)
         , partB =
               head $
-              map
-                  (\(a, b) ->
-                       catMaybes $ zipWith (\x y -> x <$ guard (x == y)) a b) $
+              map (catMaybes . uncurry (zipWith (\x y -> x <$ guard (x == y)))) $
               filter ((== 1) . uncurry differences) $ allPairs input
         }
