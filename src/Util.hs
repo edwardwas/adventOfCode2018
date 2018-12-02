@@ -5,6 +5,10 @@ module Util where
 
 import           Data.Bifunctor
 
+allPairs :: [a] -> [(a,a)]
+allPairs []     = []
+allPairs (a:as) = zip (repeat a) as ++ allPairs as
+
 data DayResult a b = DayResult
     { partA :: a
     , partB :: b
