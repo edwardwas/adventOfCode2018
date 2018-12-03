@@ -5,9 +5,10 @@ module Main where
 
 import qualified Day01
 import qualified Day02
+import qualified Day03
 import           Util
 
-import           Control.Monad       (forM_, guard, unless)
+import           Control.Monad       (forM_, unless)
 import           Data.Bifunctor
 import           Data.Map            (Map)
 import qualified Data.Map            as M
@@ -17,7 +18,10 @@ import           Options.Applicative
 days :: Map Int (DayResult String String)
 days =
     M.fromList
-        [(1, bimap show show Day01.result), (2, bimap show id Day02.result)]
+        [ (1, bimap show show Day01.result)
+        , (2, bimap show id Day02.result)
+        , (3, bimap show show Day03.result)
+        ]
 
 data RunOptions = RunOptions
     { daysToRun :: [Int]
