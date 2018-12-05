@@ -21,6 +21,7 @@ executable adventOfCode2018
     , Day01
     , Day02
     , Day03
+    , Day05
   -- other-extensions:
   build-depends:       base >=4.9 && <4.13
     , text
