@@ -25,8 +25,8 @@ result =
 
 removeAllReacting :: String -> String
 removeAllReacting =
-    let helper x (y:ys)
+    let helper (y:ys) x
             | x /= y && toUpper x == toUpper y = ys
             | otherwise = x : y : ys
-        helper x [] = [x]
-     in foldr helper ""
+        helper [] x = [x]
+     in foldl helper ""
