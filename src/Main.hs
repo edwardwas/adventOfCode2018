@@ -7,6 +7,7 @@ import qualified Day01
 import qualified Day02
 import qualified Day03
 import qualified Day05
+import qualified Day07
 import           Util
 
 import           Control.Monad       (forM_, unless)
@@ -23,6 +24,7 @@ days =
         , (2, bimap show id Day02.result)
         , (3, bimap show show Day03.result)
         , (5, bimap show show Day05.result)
+        , (7, bimap id show Day07.result)
         ]
 
 data RunOptions = RunOptions
