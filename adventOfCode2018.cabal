@@ -23,6 +23,7 @@ executable adventOfCode2018
     , Day03
     , Day05
     , Day07
+    , Day08
   -- other-extensions:
   build-depends:       base >=4.9 && <4.13
     , text
@@ -32,8 +33,8 @@ executable adventOfCode2018
     , optparse-applicative
     , regex-compat
     , megaparsec
-    , mtl
     , lens
+    , mtl
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options: -O2 -threaded  
